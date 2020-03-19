@@ -6,6 +6,7 @@ import Empty from "./Empty"
 
 
 const Appointment = function (props) {
+  
   return(
       <article className="appointment">
         <Header time={props.time}/>
