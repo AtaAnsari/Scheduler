@@ -1,5 +1,5 @@
 
-export function getAppointmentsForDay(state, day) {
+const getAppointmentsForDay = function (state, day) {
   if (state.days.length === 0){
     return []
   } else {
@@ -18,4 +18,6 @@ export function getAppointmentsForDay(state, day) {
   }
 
 }
+
+export default getAppointmentsForDay
 
