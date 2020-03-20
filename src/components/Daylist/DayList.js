@@ -4,6 +4,7 @@ const DayList = function (props) {
   const ListOfDays = props.days.map(day => {
       return(      
       <DayListItem 
+        key = {day.id}
         id = {day.id}
         name={day.name} 
         spots={day.spots} 
