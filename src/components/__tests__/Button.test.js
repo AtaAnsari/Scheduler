@@ -2,7 +2,7 @@ import React from "react";
 
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import Button from "components/Button";
+import Button from "components/Daylist/Button";
 
 afterEach(cleanup);
 
