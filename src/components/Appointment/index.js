@@ -6,6 +6,7 @@ import Empty from "./Empty"
 import {useVisualMode} from "../../hooks/useVisualMode"
 import Form from "./Form"
 import Status from "./Status"
+import Confirm from "./Confirm"
 
 
 
@@ -14,12 +15,14 @@ const Appointment = function (props) {
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "STATUS";
+  const CONFIRM = "CONFIRM";
   
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
   const onAdd = () => {transition(CREATE)};
   const onCancel = () => {transition(EMPTY)};
+  const onConfirm = () => {transition(CONFIRM)};
 
   function save(name, interviewer) {
     const interview = {
@@ -47,8 +50,7 @@ const Appointment = function (props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          deleteIt={deleteIt}
-          id={props.id}
+          onConfirm={onConfirm}
         />
         )}
         {mode === CREATE && (
@@ -60,6 +62,12 @@ const Appointment = function (props) {
         )}
         {mode === SAVING && (
         <Status/>
+        )}
+        {mode === CONFIRM && (
+        <Confirm
+        deleteIt={deleteIt}
+        id={props.id}
+        />
         )}
       </article>
   )

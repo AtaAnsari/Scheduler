@@ -22,7 +22,7 @@ const Show = function (props) {
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
-            onClick={()=>{props.deleteIt(props.id)}}
+            onClick={props.onConfirm}
           />
         </section>
       </section>
