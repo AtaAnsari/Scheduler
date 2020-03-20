@@ -30,6 +30,13 @@ const Appointment = function (props) {
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW)) 
   }
+
+  function deleteIt(id) {
+    console.log('this is the id:', id)
+    transition(SAVING);
+    props.deleteInterview(id)
+    .then(() => transition(EMPTY)) 
+  }
   
 
   return(
@@ -40,6 +47,8 @@ const Appointment = function (props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          deleteIt={deleteIt}
+          id={props.id}
         />
         )}
         {mode === CREATE && (
