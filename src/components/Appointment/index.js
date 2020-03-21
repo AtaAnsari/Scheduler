@@ -40,7 +40,7 @@ console.log('day', props.day);
       interviewer
     };
     transition(SAVING, true);
-    props.getAlteredDay(props.day)
+    props.addSpot(props.day)
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
     .catch(error => {
@@ -51,6 +51,7 @@ console.log('day', props.day);
   function deleteIt(id) {
     console.log('this is the id:', id)
     transition(SAVING, true);
+    props.subtractSpot(props.day)
     props.deleteInterview(id)
     .then(() => transition(EMPTY))
     .catch(error => {

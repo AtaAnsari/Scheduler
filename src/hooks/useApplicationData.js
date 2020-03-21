@@ -35,16 +35,9 @@ export function useApplicationData () {
     }
   }
 
-  function getAlteredDay(day) {
-    // console.log("day provided to update spots", day)
-    // console.log("days array", state.days)
+  function addSpot(day) {
     const spots = getDayFromDays(day, state.days) - 1
     const index = getDayIndex(day, state.days)
-
-    // const dayToAmmend = {
-    //   ...state.days[index ],
-    //   spots
-    // }
 
     setState((state) => ({
       
@@ -53,8 +46,19 @@ export function useApplicationData () {
       
     })
     )
+}
 
-      // console.log('day to amend', dayToAmmend);
+function subtractSpot(day) {
+  const spots = getDayFromDays(day, state.days) + 1
+  const index = getDayIndex(day, state.days)
+
+  setState((state) => ({
+    
+    ...state,
+    ...state.days[index ]["spots"]=spots
+    
+  })
+  )
 }
 
   function bookInterview(id, interview) {
@@ -111,7 +115,8 @@ return {
   bookInterview,
   deleteInterview,
   setState,
-  getAlteredDay
+  addSpot,
+  subtractSpot
 };
 
 }
