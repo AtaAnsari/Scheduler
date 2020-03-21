@@ -6,7 +6,7 @@ const Confirm = function (props) {
     <main className="appointment__card appointment__card--confirm">
       <h1 className="text--semi-bold">Delete the appointment?</h1>
       <section className="appointment__actions">
-        <Button onClick={props.onCancel} danger>Cancel</Button>
+        <Button onClick={props.onCancelConfirm} danger>Cancel</Button>
         <Button onClick={()=>{props.deleteIt(props.id)}} danger>Confirm</Button>
       </section>
     </main>

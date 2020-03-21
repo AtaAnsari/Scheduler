@@ -12,17 +12,6 @@ import Error from "./Error"
 
 
 const Appointment = function (props) {
-console.log(props.interview)
-
-//   const getInterviewerName = function (id, interviewers) {
-//     for(const interviewer of interviewers){
-//       if(interviewer.id === id){
-//         return interviewer.name
-//       }
-//     }
-//     }
-
-// const interviewerName = getInterviewerName(props.id, props.interviewers)
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -42,6 +31,7 @@ console.log(props.interview)
   const onConfirm = () => {transition(CONFIRM)};
   const onEdit = () => {transition(EDIT)};
   const onCancelEdit = () => {transition(SHOW)};
+  const onCancelConfirm = () => {transition(SHOW)};
   const onCloseError = () => {back()};
 
 
@@ -96,6 +86,7 @@ console.log(props.interview)
         <Confirm
         deleteIt={deleteIt}
         id={props.id}
+        onCancelConfirm={onCancelConfirm}
         />
         )}
         {mode === EDIT && (
