@@ -12,7 +12,7 @@ import Error from "./Error"
 
 
 const Appointment = function (props) {
-
+console.log('day', props.day);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -22,7 +22,6 @@ const Appointment = function (props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   
-
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -41,6 +40,7 @@ const Appointment = function (props) {
       interviewer
     };
     transition(SAVING, true);
+    props.getAlteredDay(props.day)
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
     .catch(error => {

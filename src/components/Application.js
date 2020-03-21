@@ -19,7 +19,7 @@ export default function Application(props) {
     setDay,
     bookInterview,
     deleteInterview,
-    setState
+    getAlteredDay
   } = useApplicationData();
   
   const appointments = getAppointmentsForDay(state, state.day)
@@ -30,12 +30,14 @@ const apptSchedule = appointments.map( appt => {
 
 return(
   <Appointment
+  getAlteredDay={getAlteredDay}
   deleteInterview={deleteInterview}
   bookInterview={bookInterview}
   interviewers ={interviewers}
   interviewDetails={interview}
   key={appt.id} 
   {...appt}
+  day={state.day}
   />
 )
 }

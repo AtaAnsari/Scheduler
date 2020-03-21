@@ -10,15 +10,52 @@ export function useApplicationData () {
   });
   const setDay = day => setState({ ...state, day });
 
+
   useEffect(()=>{
     Promise.all([
       Promise.resolve(axios.get("/api/days")),
       Promise.resolve(axios.get("/api/appointments")),
       Promise.resolve(axios.get("/api/interviewers"))
     ]).then((all) => {
-      setState(prev => ({days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
+      setState(prev => ({day: "Monday", days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
     })
   },[])
+  function getDayFromDays(day, daysArray){
+    for (const d of daysArray){
+      if(d.name === day){
+        return d.spots
+      }
+    }
+  }
+  function getDayIndex(day, daysArray){
+    for (const d of daysArray){
+      if(d.name === day){
+        return daysArray.indexOf(d)
+      }
+    }
+  }
+
+  function getAlteredDay(day) {
+    // console.log("day provided to update spots", day)
+    // console.log("days array", state.days)
+    const spots = getDayFromDays(day, state.days) - 1
+    const index = getDayIndex(day, state.days)
+
+    // const dayToAmmend = {
+    //   ...state.days[index ],
+    //   spots
+    // }
+
+    setState((state) => ({
+      
+      ...state,
+      ...state.days[index ]["spots"]=spots
+      
+    })
+    )
+
+      // console.log('day to amend', dayToAmmend);
+}
 
   function bookInterview(id, interview) {
     const appointment = {
@@ -55,7 +92,7 @@ return  axios.delete(`/api/appointments/${id}`)
     (res) => {
       console.log(res)
       setState((state) => ({
-        
+  
         ...state,
         appointments: {
           ...state.appointments,
@@ -73,7 +110,8 @@ return {
   setDay,
   bookInterview,
   deleteInterview,
-  setState
+  setState,
+  getAlteredDay
 };
 
 }
