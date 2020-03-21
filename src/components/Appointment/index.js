@@ -11,18 +11,32 @@ import Confirm from "./Confirm"
 
 
 const Appointment = function (props) {
+console.log(props.interview)
+
+//   const getInterviewerName = function (id, interviewers) {
+//     for(const interviewer of interviewers){
+//       if(interviewer.id === id){
+//         return interviewer.name
+//       }
+//     }
+//     }
+
+// const interviewerName = getInterviewerName(props.id, props.interviewers)
+
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "STATUS";
   const CONFIRM = "CONFIRM";
-  
+  const EDIT = "EDIT";
+
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
   const onAdd = () => {transition(CREATE)};
   const onCancel = () => {transition(EMPTY)};
   const onConfirm = () => {transition(CONFIRM)};
+  const onEdit = () => {transition(EDIT)};
 
   function save(name, interviewer) {
     const interview = {
@@ -51,6 +65,8 @@ const Appointment = function (props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onConfirm={onConfirm}
+          onEdit={onEdit}
+          interviewDetails={props.interviewDetails}
         />
         )}
         {mode === CREATE && (
@@ -67,6 +83,15 @@ const Appointment = function (props) {
         <Confirm
         deleteIt={deleteIt}
         id={props.id}
+        />
+        )}
+        {mode === EDIT && (
+        <Form
+          interviewers= {props.interviewers}
+          interviewer={props.interview.interviewer}
+          name={props.interview.student}
+          onCancel={onCancel}
+          save = {save}
         />
         )}
       </article>

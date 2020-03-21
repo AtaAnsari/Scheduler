@@ -7,6 +7,8 @@ import DayList from "components/Daylist/DayList.js"
 import Appointment from "./Appointment/index"
 import {getAppointmentsForDay} from "../helpers/selectors"
 import {getInterviewersForDay} from "../helpers/selectors"
+import {getInterview} from "../helpers/selectors"
+
 
 
 
@@ -22,7 +24,7 @@ export default function Application(props) {
   
   const appointments = getAppointmentsForDay(state, state.day)
   const interviewers = getInterviewersForDay(state, state.day)
-
+  
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -73,12 +75,14 @@ return  axios.delete(`/api/appointments/${id}`)
   
 
 const apptSchedule = appointments.map( appt => {
-  // const interview = getInterview(state, appointment.interview);
+  const interview = getInterview(state, appt.interview);
+  // console.log('interview', interview );
 return(
   <Appointment
   deleteInterview={deleteInterview}
   bookInterview={bookInterview}
-  interviewers ={interviewers} 
+  interviewers ={interviewers}
+  interviewDetails={interview}
   key={appt.id} 
   {...appt}
   />

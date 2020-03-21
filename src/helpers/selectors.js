@@ -39,6 +39,7 @@ export function getInterviewersForDay(state, day) {
 
 }
 
+
 export function getInterview(state, appointmentInterview) {
 
   if(!appointmentInterview){return null} else {
@@ -50,14 +51,18 @@ export function getInterview(state, appointmentInterview) {
   let interviewDetails = {}
 
   const getInterviewConductor = function (){
+    const interviewerDetails = []
     for(const person in allInterviewers) {
     if(allInterviewers[person].id === interviewerId){
-      return allInterviewers[person]
+      interviewerDetails.push(allInterviewers[person].id)
+      interviewerDetails.push(allInterviewers[person].name)
+      return interviewerDetails
     }
   }
 }
 const InterviewConductor = getInterviewConductor()
-interviewDetails = {student:studentName, interviewer:InterviewConductor}
+interviewDetails = {student:studentName, interviewer:InterviewConductor[0], interviewerName:InterviewConductor[1]}
+// console.log('interviewDetails', interviewDetails);
   return interviewDetails
   }
   

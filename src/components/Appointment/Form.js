@@ -4,6 +4,7 @@ import Button from "../Daylist/Button"
 
 
 const Form = function (props) {
+  // console.log("props", props)
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const reset = function() {
