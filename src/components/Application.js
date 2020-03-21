@@ -72,7 +72,6 @@ return  axios.delete(`/api/appointments/${id}`)
 
   )
 }
-  
 
 const apptSchedule = appointments.map( appt => {
   const interview = getInterview(state, appt.interview);

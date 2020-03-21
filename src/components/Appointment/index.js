@@ -37,6 +37,7 @@ console.log(props.interview)
   const onCancel = () => {transition(EMPTY)};
   const onConfirm = () => {transition(CONFIRM)};
   const onEdit = () => {transition(EDIT)};
+  const onCancelEdit = () => {transition(SHOW)};
 
   function save(name, interviewer) {
     const interview = {
@@ -90,7 +91,7 @@ console.log(props.interview)
           interviewers= {props.interviewers}
           interviewer={props.interview.interviewer}
           name={props.interview.student}
-          onCancel={onCancel}
+          onCancel={onCancelEdit}
           save = {save}
         />
         )}
