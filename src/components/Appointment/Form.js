@@ -7,6 +7,17 @@ const Form = function (props) {
   // console.log("props", props)
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
+
+  function validate() {
+    if (name === "") {
+      setError("Student name cannot be blank");
+      return;
+    }
+  
+    props.save(name, interviewer);
+  }
+  
   const reset = function() {
     setName("");
     setInterviewer(null)
@@ -25,17 +36,16 @@ const Form = function (props) {
               type="text"
               placeholder="Enter Student Name"
               onChange={(e) => { setName(e.target.value); }}
-              /*
-                This must be a controlled component
-              */
+              data-testid="student-name-input"
             />
           </form>
+          <section className="appointment__validation">{error}</section>
           <InterviewerList interviewers={props.interviewers} value={interviewer} onChange={setInterviewer} />
         </section>
         <section className="appointment__card-right">
           <section className="appointment__actions">
             <Button onClick={cancel} danger>Cancel</Button>
-            <Button onClick={()=>{props.save(name, interviewer)}} confirm>Save</Button>
+            <Button onClick={validate} confirm>Save</Button>
           </section>
         </section>
       </main>
