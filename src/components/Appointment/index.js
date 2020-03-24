@@ -5,18 +5,20 @@ import Show from "./Show"
 import Empty from "./Empty"
 import {useVisualMode} from "../../hooks/useVisualMode"
 import Form from "./Form"
-import Status from "./Status"
+import Saving from "./Saving"
+import Deleting from "./Deleting"
 import Confirm from "./Confirm"
 import Error from "./Error"
 
 
 
 const Appointment = function (props) {
-console.log('day', props.day);
+// console.log('day', props.day);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
-  const SAVING = "STATUS";
+  const SAVING = "SAVING";
+  const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
@@ -49,8 +51,8 @@ console.log('day', props.day);
   }
 
   function deleteIt(id) {
-    console.log('this is the id:', id)
-    transition(SAVING, true);
+    // console.log('this is the id:', id)
+    transition(DELETING, true);
     props.subtractSpot(props.day)
     props.deleteInterview(id)
     .then(() => transition(EMPTY))
@@ -61,7 +63,7 @@ console.log('day', props.day);
   
 
   return(
-      <article className="appointment">
+      <article data-testid="appointment" className="appointment">
         <Header time={props.time}/>
         {mode === EMPTY && <Empty onAdd={onAdd} />}
         {mode === SHOW && (
@@ -81,7 +83,10 @@ console.log('day', props.day);
         />
         )}
         {mode === SAVING && (
-        <Status/>
+        <Saving/>
+        )}
+        {mode === DELETING && (
+        <Deleting/>
         )}
         {mode === CONFIRM && (
         <Confirm
