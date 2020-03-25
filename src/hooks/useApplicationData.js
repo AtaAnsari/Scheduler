@@ -35,7 +35,7 @@ export function useApplicationData () {
     }
   }
 
-  function addSpot(day) {
+  function subtractSpot(day) {
     const spots = getDayFromDays(day, state.days) - 1
     const index = getDayIndex(day, state.days)
 
@@ -48,7 +48,7 @@ export function useApplicationData () {
     )
 }
 
-function subtractSpot(day) {
+function addSpot(day) {
   const spots = getDayFromDays(day, state.days) + 1
   const index = getDayIndex(day, state.days)
 

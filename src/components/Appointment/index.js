@@ -41,7 +41,7 @@ const Appointment = function (props) {
       interviewer
     };
     transition(SAVING, true);
-    mode === CREATE && props.addSpot(props.day)
+    mode === CREATE && props.subtractSpot(props.day)
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
     .catch(error => {
@@ -51,7 +51,7 @@ const Appointment = function (props) {
 
   function deleteIt(id) {
     transition(DELETING, true);
-    props.subtractSpot(props.day)
+    props.addSpot(props.day)
     props.deleteInterview(id)
     .then(() => transition(EMPTY))
     .catch(error => {
