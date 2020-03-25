@@ -61,7 +61,6 @@ describe("Application", () => {
     target: { value: "Samuel L. Jackson" } });
     fireEvent.click(getByText(appointment, "Save"))
     await waitForElement(() => getByText(appointment, "Samuel L. Jackson"));
-    console.log(prettyDOM(appointment));
     const dayList = getAllByTestId(container, "day");
     const monday = dayList.find(day => queryByText(day, "Tuesday"))
     expect(getByText(monday, "1 spot remaining")).toBeInTheDocument();
@@ -78,7 +77,6 @@ describe("Application", () => {
     target: { value: "Samuel L. Jackson" } });
     fireEvent.click(getByText(appointment, "Save"))
     await waitForElement(() => getByText(appointment, "Could not save appointment"));
-    console.log(prettyDOM(appointment));
     expect(getByText(appointment, "Could not save appointment")).toBeInTheDocument();
   }); 
 

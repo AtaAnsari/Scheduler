@@ -13,7 +13,6 @@ import Error from "./Error"
 
 
 const Appointment = function (props) {
-// console.log('day', props.day);
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -51,7 +50,6 @@ const Appointment = function (props) {
   }
 
   function deleteIt(id) {
-    // console.log('this is the id:', id)
     transition(DELETING, true);
     props.subtractSpot(props.day)
     props.deleteInterview(id)

@@ -58,7 +58,6 @@ export default {
   
   get: jest.fn(url => {
     if (url === "/api/days") {
-      console.log("CHECK TO SEE IF THE MOCKS ARE BEING MODIFIED",fixtures.days);
       return Promise.resolve({
         status: 200,
         statusText: "OK",

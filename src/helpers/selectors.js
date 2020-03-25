@@ -62,7 +62,6 @@ export function getInterview(state, appointmentInterview) {
 }
 const InterviewConductor = getInterviewConductor()
 interviewDetails = {student:studentName, interviewer:InterviewConductor[0], interviewerName:InterviewConductor[1]}
-// console.log('interviewDetails', interviewDetails);
   return interviewDetails
   }
   

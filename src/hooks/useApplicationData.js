@@ -70,7 +70,6 @@ function subtractSpot(day) {
   return  axios.put(`/api/appointments/${id}`, appointment)
     .then(
       (res) => {
-        console.log(res)
         setState((state) => ({
           
           ...state,
@@ -94,7 +93,6 @@ function deleteInterview(id) {
 return  axios.delete(`/api/appointments/${id}`)
   .then(
     (res) => {
-      console.log(res)
       setState((state) => ({
   
         ...state,
