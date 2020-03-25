@@ -12,8 +12,9 @@ import {useApplicationData} from "../hooks/useApplicationData"
 
 
 
-export default function Application(props) {
+export default function Application() {
 
+  // We use this custom hook to import all of the state management logic from a seperate file. This was done to separate this logic from the rendering concern. 
   const {
     state,
     setDay,
@@ -26,6 +27,7 @@ export default function Application(props) {
   const appointments = getAppointmentsForDay(state, state.day)
   const interviewers = getInterviewersForDay(state, state.day)
 
+// Here I create a new array of appointment components for each appointment in the appointments array for a given day. Each appointment component is passed the appropriate props.
 const apptSchedule = appointments.map( appt => {
   const interview = getInterview(state, appt.interview);
 

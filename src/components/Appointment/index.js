@@ -13,6 +13,7 @@ import Error from "./Error"
 
 
 const Appointment = function (props) {
+  // Defining mode variables so that transitions can occur
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -23,9 +24,11 @@ const Appointment = function (props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   
+  // Using custom hook to track the mode and manipulate it
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+  // Defining functions that will transition the mode
   const onAdd = () => {transition(CREATE)};
   const onCancel = () => {transition(EMPTY)};
   const onConfirm = () => {transition(CONFIRM)};
@@ -33,8 +36,7 @@ const Appointment = function (props) {
   const onCancelEdit = () => {transition(SHOW)};
   const onCancelConfirm = () => {transition(SHOW)};
   const onCloseError = () => {back()};
-
-
+// This function will use the name and interviewer details passed to it to create an interview object and will call the bookInterview function with this interview, which in turn will update the db. 
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -48,7 +50,7 @@ const Appointment = function (props) {
       transition(ERROR_SAVE, true)
   });
   }
-
+// This function will be called with the id of the appointment that needs to be cancelled. It will then call the deleteInterview function which will then update the db
   function deleteIt(id) {
     transition(DELETING, true);
     props.addSpot(props.day)
@@ -59,7 +61,6 @@ const Appointment = function (props) {
   });
   }
   
-
   return(
       <article data-testid="appointment" className="appointment">
         <Header time={props.time}/>

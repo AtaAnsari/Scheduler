@@ -1,6 +1,6 @@
 import React from "react"
 import Button from "../Daylist/Button"
-
+// This is the view of the appointment that asks the user if they are sure about deleting an appointment.
 const Confirm = function (props) {
   return(
     <main className="appointment__card appointment__card--confirm">
