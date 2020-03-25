@@ -42,7 +42,7 @@ const Appointment = function (props) {
       interviewer
     };
     transition(SAVING, true);
-    props.addSpot(props.day)
+    mode === CREATE && props.addSpot(props.day)
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
     .catch(error => {
