@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react"
+import {useState, useEffect} from "react"
 import axios from "axios"
 
 // custom hook that stores all of the data retrieved from the api in state. 
