@@ -10,14 +10,18 @@ const Form = function (props) {
   const [error, setError] = useState("");
 // This function validates whether or not a name is entered by a user upon form submission. 
   function validate() {
-    if (name === "") {
-      setError("Student name cannot be blank");
-      return;
-    }
+
+  if (name === "") {
+    setError("Student name cannot be blank");
+    return;
+  } else if (!interviewer) {
+    setError("Interviewer must be selected");
+    return;
+  } else {
     setError("");
     props.save(name, interviewer);
   }
-  
+}
   const reset = function() {
     setName("");
     setInterviewer(null)
