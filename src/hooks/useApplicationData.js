@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from "react"
 import axios from "axios"
 
+// custom hook that stores all of the data retrieved from the api in state. 
 export function useApplicationData () {
   const [state, setState] = useState({
     day: "Monday",
@@ -8,6 +9,7 @@ export function useApplicationData () {
     appointments: {},
     interviewers: {}
   });
+
   const setDay = day => setState({ ...state, day });
 
 
@@ -20,6 +22,7 @@ export function useApplicationData () {
       setState(prev => ({day: "Monday", days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
     })
   },[])
+  // Determines which day is currently selected by the user
   function getDayFromDays(day, daysArray){
     for (const d of daysArray){
       if(d.name === day){
@@ -27,6 +30,7 @@ export function useApplicationData () {
       }
     }
   }
+  // Determine the index of the currently selected day in the array of days. 
   function getDayIndex(day, daysArray){
     for (const d of daysArray){
       if(d.name === day){
@@ -34,7 +38,7 @@ export function useApplicationData () {
       }
     }
   }
-
+// subtracts from the number of spots remaining when a user books a new appointment. 
   function subtractSpot(day) {
     const spots = getDayFromDays(day, state.days) - 1
     const index = getDayIndex(day, state.days)
@@ -47,7 +51,7 @@ export function useApplicationData () {
     })
     )
 }
-
+// adds to the number of spots remaining when a user cancels an appointment. 
 function addSpot(day) {
   const spots = getDayFromDays(day, state.days) + 1
   const index = getDayIndex(day, state.days)
@@ -60,7 +64,7 @@ function addSpot(day) {
   })
   )
 }
-
+// submits a put request to the api to update the db with the details of a new appt
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -83,7 +87,7 @@ function addSpot(day) {
 
     )
 }
-
+// submits a delete request to the api to update the db when and appointment is deleted
 function deleteInterview(id) {
   const appointment = {
     ...state.appointments[id],

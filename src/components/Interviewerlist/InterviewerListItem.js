@@ -2,7 +2,6 @@ import React from "react";
 import "./InterviewerListItem.scss"
 import classnames from "classnames"
 
-
 const InterviewerListItem = function (props) {
   let interviewerClass = classnames({
     "interviewers__item": true,

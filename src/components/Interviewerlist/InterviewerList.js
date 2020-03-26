@@ -2,7 +2,7 @@ import React from "react"
 import "./InterviewerList.scss"
 import InterviewerListItem from "./InterviewerListItem"
 import PropTypes from 'prop-types';
-
+// This is the list of interviewers rendered in the form. The user may select a particular interviewer from this list.
 const InterviewerList= function (props) {
   let listOfInterviewers = props.interviewers.map(
     interviewer => {
@@ -13,9 +13,7 @@ const InterviewerList= function (props) {
         name={interviewer.name}
         avatar={interviewer.avatar}
         selected={interviewer.id === props.value}
-        // selected={interviewer.id === props.interviewer}
         onChange={(event)=> props.onChange(interviewer.id)}
-        // setInterviewer={(event)=> props.setInterviewer(interviewer.id)}
         />
       )
     }

@@ -1,5 +1,5 @@
 import {React, useState} from "react"
-
+// This custom hook allows the app to keep track of and manipulate the visual mode. I.e what view of the appointment is shown at any given point of time. 
 export function useVisualMode (initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]); 

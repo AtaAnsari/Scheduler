@@ -1,5 +1,5 @@
 import React from "react"
-
+// This is the view of the appointment is shown when there is an error while saving or deleting an appointment, likely as a result of a failed http request. 
 const Error = function (props) {
   return(
     <main className="appointment__card appointment__card--error">

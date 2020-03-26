@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import "./DayListItem.scss"
-
+// this is the specific day in the day list, it is rendered conditionally depending on the number of spots remaining for the day
 export default function DayListItem(props) {
   let dayClass = classnames({
     "day-list__item": props,

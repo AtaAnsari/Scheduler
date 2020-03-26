@@ -1,4 +1,4 @@
-
+// This function takes the appointments data returned by the api and isolates only the appointments for a given day
 export function getAppointmentsForDay(state, day) {
   if (state.days.length === 0){
     return []
@@ -18,6 +18,8 @@ export function getAppointmentsForDay(state, day) {
   }
 
 }
+
+// This function takes the interviewers data returned by the api and isolates only those interviewers that are available on a given day
 
 export function getInterviewersForDay(state, day) {
   if (state.days.length === 0){
@@ -39,6 +41,7 @@ export function getInterviewersForDay(state, day) {
 
 }
 
+// This function takes all of the new interview data collected by the app from the user and consolidates it in to a form that can be communicated to the api so that the db is updated successfully.
 
 export function getInterview(state, appointmentInterview) {
 

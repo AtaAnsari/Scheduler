@@ -1,6 +1,6 @@
 import React from "react"
-
-const Status = function (props) {
+// This is the view of the appointment is shown while the appointment is asynchronously saved. 
+const Status = function () {
   return(
     <main className="appointment__card appointment__card--status">
       <img

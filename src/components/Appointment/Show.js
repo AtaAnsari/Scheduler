@@ -1,5 +1,5 @@
 import React from "react"
-
+// This is the view of the appointment is shown for a booked appointment, this view gives the user the ability to edit or delete a given appointment. 
 const Show = function (props) {
   return(
     <main className="appointment__card appointment__card--show">

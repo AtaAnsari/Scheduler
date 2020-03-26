@@ -1,5 +1,6 @@
 import React from "react";
 import DayListItem from "./DayListItem.js"
+// This is the list of days the user can select a specific day from.
 const DayList = function (props) {
   const ListOfDays = props.days.map(day => {
       return(      

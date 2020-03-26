@@ -1,5 +1,5 @@
 import React from "react"
-
+// This is the view of the appointment is shown while the appointment is asynchronously deleted. 
 const Status = function (props) {
   return(
     <main className="appointment__card appointment__card--status">
