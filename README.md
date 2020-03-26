@@ -4,10 +4,10 @@ Interview Scheduler is single page application that allows users to easily manag
 
 ## Final Product
 
-!["featuredCats"](https://github.com/AtaAnsari/meowzza/blob/master/docs/featuredCats.png)
-!["msgingFeature"](https://github.com/AtaAnsari/meowzza/blob/master/docs/msgingFeature.png)
-!["catCards"](https://github.com/AtaAnsari/meowzza/blob/master/docs/catCards.png)
-!["addNewCatForm"](https://github.com/AtaAnsari/meowzza/blob/master/docs/addNewCatForm.png)
+!["Create"](https://github.com/AtaAnsari/Scheduler/blob/master/docs/Create.png)
+!["Delete"](https://github.com/AtaAnsari/Scheduler/blob/master/docs/Delete.png)
+!["Error"](https://github.com/AtaAnsari/Scheduler/blob/master/docs/Error.png)
+!["Main"](https://github.com/AtaAnsari/Scheduler/blob/master/docs/Main.png)
 
 ## Dependencies
 
